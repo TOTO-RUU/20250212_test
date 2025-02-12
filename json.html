@@ -1,0 +1,188 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+
+
+    <style>
+
+      body {font-Family :Charcoal,sans-serif;  background-color:#eee;}
+      .box > div {width:270px; height:279px; overflow:hidden;   }
+
+      .box > div > a > img {width:270px; height:270px; }
+
+      .box > div > a > img:hover {opacity:0.5; }
+
+      .box> h5> a   {font-size: 12px;  height:20px; margin: 0px;  margin-top: -15px;  margin-right: 15px; margin-left: 15px; color:#000;  text-align:left; text-decoration:none; display:block; }
+
+
+      .box>p>a {border-bottom: 1px solid #eee;  margin-right: 15px; margin-top: -35px;  margin-left: 15px;  font-size: 12px;  color:#666;  line-height:45px; text-align:left; text-decoration:none; display:block;}
+
+      .box>span {font-size: 11px; margin-left:15px; margin-right: 15px;  float:left;}
+
+      .box>button {font-size: 11px; border-radius:3px;  border:none;  background : #ba7112;  padding: 5px; color : #fff;  margin-right: 15px;  float:right;  cursor:pointer;}
+
+
+
+
+      #title {color:green; text-align:center; font-family :Impact;  font-size:35px;}
+
+
+      p {color:#666; font-size:13px; margin:0;}
+
+      article {width:1200px; height:900px; text-align:center; border:1px solid #999; margin:0 auto;}
+
+      .box {width:270px; height:380px; border:1px solid #ddd; background-color:#fff; margin:20px 10px; display:inline-block; box-shadow:4px 4px 4px #ddd;}
+
+
+
+
+
+    </style>
+
+
+
+
+    <script>
+
+      $(function(){
+
+        $.ajax({
+
+          url: "./json/weekly.json",
+
+          dataType: "json",
+
+          success : function(data){
+
+            if(data.length>0){
+
+
+
+              for(var i in data){
+            
+
+                $(".box").eq(i).append( '<div><a href="#">'+"<img src='img/hit/"+data[i].url+"'/>"+'</a></div>'); 
+
+
+
+
+
+                $(".box").eq(i).append('<h5><a href="#">'+data[i].title+"</a><h5>");      
+
+                $(".box").eq(i).append('<p><a href="#">'+data[i].subtitle+"</a></p>");                             
+
+                $(".box").eq(i).append("<span>"+data[i].price+"</span>");
+
+
+
+                //review random count
+
+                var count = Math.floor(Math.random() * 100);
+                $(".box").eq(i).append("<button>"+count+" REVIEWS"+"</button>");
+
+
+              }
+
+            }
+
+          }
+
+        });
+
+
+      });
+
+
+    </script>
+
+
+
+
+  </head>
+
+
+  <body>
+    <main>
+
+      <h3 id="title"></h3>
+
+      <section>
+
+        <article>
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+          <div class="box"></div>
+
+        </article>
+
+      </section>
+
+    </main>
+
+
+
+    <script>
+
+      window.onload = function (){
+
+
+
+
+
+
+
+        // title
+        var title =document.getElementById("title")
+        title.innerHTML = "HIT OF HITS";
+
+
+
+
+        // sub title
+
+        var subtitle = document.createElement("p");
+        var textnode = document.createTextNode(" 히트조명의 인기 상품");
+        subtitle.appendChild(textnode);
+        title.appendChild(subtitle);
+
+
+
+
+
+
+
+
+      }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
